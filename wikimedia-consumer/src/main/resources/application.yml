@@ -1,0 +1,41 @@
+spring:
+  application:
+     name: wiki-consumer
+  profiles:
+    active: dev
+  config:
+    import: optional:configserver:http://localhost:8006/configServer
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092,localhost:9093,localhost:9094
+      group-id: myGroup
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521:orcl
+    driver-class-name: oracle.jdbc.OracleDriver
+    username : sys as sysdba
+    password: oracle
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dilect: org.hibernate.dialect.Oracle12cDialect
+    show-sql: true
+    
+  
+    
+ 
+server:
+  port: 8083
+  
+eureka:
+  instance:
+    hostname: localhost
+   
+      
+      

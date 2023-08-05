@@ -1,0 +1,20 @@
+spring:
+  profiles:
+    active: git
+  application:
+    name: configServer
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Debjyoti2/kafkaCentralConfig.git
+          clone-on-start: true
+          default-label: main
+eureka:
+  instance:
+    hostname: localhost
+server:
+  port: 8006
+  servlet:
+    context-path: /configServer
+
